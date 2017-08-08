@@ -1,13 +1,8 @@
-from django.core.urlresolvers import reverse
-from django.views.generic import DetailView, ListView, RedirectView, UpdateView
-
-from django.contrib.auth.mixins import LoginRequiredMixin
-
-from .models import User
-
-
+from rest_framework import authentication, exceptions
 from rest_framework import viewsets, mixins
 from rest_framework.permissions import AllowAny
+
+from .models import User
 
 from .permissions import IsUserOrReadOnly
 from .serializers import CreateUserSerializer, UserSerializer
@@ -18,7 +13,7 @@ class UserViewSet(mixins.CreateModelMixin,
                   mixins.UpdateModelMixin,
                   viewsets.GenericViewSet):
     """
-    Creates, Updates, and retrives User accounts
+    Creates, Updates, and retrieves User accounts
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -27,10 +22,23 @@ class UserViewSet(mixins.CreateModelMixin,
     def create(self, request, *args, **kwargs):
         self.serializer_class = CreateUserSerializer
         self.permission_classes = (AllowAny,)
-        if not request.POST.get('password', None):
-            request.POST['password'] = User.objects.make_random_password()
-        return super(UserViewSet, self).create(request, *args, **kwargs)
+        random_pass = None
+        if not request.data.get('password', None):
+            random_pass = User.objects.make_random_password()
+            request.data['password'] = random_pass
+        response = super().create(request, *args, **kwargs)
+        if random_pass:
+            response.data['random_pass'] = random_pass
+        return response
 
+
+class UserAuthentication(authentication.SessionAuthentication):
+
+    def authenticate_header(self, request):
+        return super().authenticate_header(request)
+
+    def authenticate(self, request):
+        return super().authenticate(request)
 
 # class UserDetailView(LoginRequiredMixin, DetailView):
 #     model = User
