@@ -22,7 +22,7 @@ class QuestionOrder(models.Model):
     questionnaire = models.ForeignKey('Questionnaire', on_delete=models.DO_NOTHING)
 
     def __str__(self):
-        return self.order
+        return str(self.order)
 
 
 @receiver(pre_save, sender=QuestionOrder)
