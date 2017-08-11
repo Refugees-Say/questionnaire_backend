@@ -14,7 +14,7 @@ from refugee_say.ranking_question.views import RankingQuestionViewSet
 from refugee_say.selection_question.views import SelectionQuestionViewSet
 
 from refugee_say.choice.views import ChoiceViewSet, TypeViewSet
-from refugee_say.questionnaire.views import QuestionnaireViewSet, QuestionOrderViewSet
+from refugee_say.questionnaire.views import QuestionnaireViewSet
 
 from refugee_say.response.views import ResponseViewSet
 
@@ -27,8 +27,9 @@ router.register(r'selections', SelectionQuestionViewSet)
 router.register(r'choices', ChoiceViewSet)
 router.register(r'choice_types', TypeViewSet)
 router.register(r'questionnaires', QuestionnaireViewSet)
-router.register(r'question_orders', QuestionOrderViewSet)
 router.register(r'responses', ResponseViewSet)
+# router.register(r'question_orders', QuestionOrderViewSet)
+
 
 urlpatterns = [
                   url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name='home'),
