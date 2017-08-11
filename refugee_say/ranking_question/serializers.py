@@ -4,9 +4,9 @@ from .models import RankingQuestion
 
 
 class RankingQuestionSerializer(serializers.ModelSerializer):
-    choice_set = serializers.StringRelatedField(many=True, read_only=True, allow_null=True)
+    choices = serializers.StringRelatedField(source='choice_set', many=True, read_only=True, allow_null=True)
 
     class Meta:
         model = RankingQuestion
-        fields = ('id', 'question', 'description', 'language', 'choice_set')
+        fields = ('id', 'question', 'description', 'language', 'choices')
         depth = 1

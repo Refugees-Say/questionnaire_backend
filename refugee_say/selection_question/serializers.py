@@ -4,9 +4,9 @@ from .models import SelectionQuestion
 
 
 class SelectionQuestionSerializer(serializers.ModelSerializer):
-    choice_set = serializers.StringRelatedField(many=True, read_only=True, allow_null=True)
+    choices = serializers.StringRelatedField(source='choice_set', many=True, read_only=True, allow_null=True)
 
     class Meta:
         model = SelectionQuestion
-        fields = ('id', 'question', 'language', 'description', 'choice_set')
+        fields = ('id', 'question', 'language', 'description', 'choices')
         depth = 1
