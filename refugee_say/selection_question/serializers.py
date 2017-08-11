@@ -8,5 +8,6 @@ class SelectionQuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SelectionQuestion
-        fields = ('id', 'question', 'language', 'description', 'choices')
+        fields = ('id', 'question', 'language', 'description', 'choices', 'type')
+        read_only_fields = ('type', )
         depth = 1

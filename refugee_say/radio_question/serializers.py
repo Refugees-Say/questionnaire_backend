@@ -8,5 +8,6 @@ class RadioQuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = RadioQuestion
-        fields = ('id', 'question', 'description', 'language', 'choices')
+        fields = ('id', 'question', 'description', 'language', 'choices', 'type')
+        read_only_fields = ('type', )
         depth = 1

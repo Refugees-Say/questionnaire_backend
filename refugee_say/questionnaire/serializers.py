@@ -15,15 +15,9 @@ from refugee_say.selection_question.serializers import SelectionQuestionSerializ
 
 
 class QuestionOrderSerializer(serializers.ModelSerializer):
-
     radio = RadioQuestionSerializer(read_only=True)
     rank = RankingQuestionSerializer(read_only=True)
     selection = SelectionQuestionSerializer(read_only=True)
-    #
-    # radio = serializers.PrimaryKeyRelatedField(allow_null=True, queryset=RadioQuestion.objects.all())
-    # rank = serializers.PrimaryKeyRelatedField(allow_null=True, queryset=RankingQuestion.objects.all())
-    # selection = serializers.PrimaryKeyRelatedField(allow_null=True, queryset=SelectionQuestion.objects.all())
-    # questionnaire = serializers.PrimaryKeyRelatedField(queryset=Questionnaire.objects.all())
 
     def create(self, validated_data):
         try:
