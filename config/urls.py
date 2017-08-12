@@ -27,7 +27,7 @@ router.register(r'selections', SelectionQuestionViewSet)
 router.register(r'choices', ChoiceViewSet)
 router.register(r'choice_types', TypeViewSet)
 router.register(r'questionnaires', QuestionnaireViewSet)
-router.register(r'responses', ResponseViewSet)
+router.register(r'responses', ResponseViewSet, base_name='responses')
 # router.register(r'question_orders', QuestionOrderViewSet)
 
 
