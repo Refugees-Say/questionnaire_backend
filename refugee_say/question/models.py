@@ -16,4 +16,8 @@ class AbstractQuestion(models.Model):
 
     @property
     def type(self):
-        raise NotImplementedError('Type not implemented')
+        raise NotImplementedError(_('Type not implemented'))
+
+    @classmethod
+    def validate_answer(cls, answer):
+        raise NotImplementedError(_('Need to provide an implementation to validate answers received form users'))

@@ -8,3 +8,7 @@ class RadioQuestion(AbstractQuestion):
 
     def __str__(self):
         return self.question
+
+    @classmethod
+    def validate_answer(cls, answer):
+        return True
