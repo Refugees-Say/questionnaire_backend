@@ -17,6 +17,7 @@ from refugee_say.choice.views import ChoiceViewSet, TypeViewSet
 from refugee_say.questionnaire.views import QuestionnaireViewSet
 
 from refugee_say.response.views import ResponseViewSet
+from refugee_say.city.views import CityViewSet
 
 
 router = DefaultRouter()
@@ -29,7 +30,7 @@ router.register(r'choice_types', TypeViewSet)
 router.register(r'questionnaires', QuestionnaireViewSet)
 router.register(r'responses', ResponseViewSet, base_name='responses')
 # router.register(r'question_orders', QuestionOrderViewSet)
-
+router.register(r'cities', CityViewSet)
 
 urlpatterns = [
                   url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name='home'),

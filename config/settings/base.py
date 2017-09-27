@@ -69,6 +69,8 @@ LOCAL_APPS = ['refugee_say.{}'.format(i) for i in [
     'radio_question',
     'ranking_question',
     'selection_question',
+    'city',
+    'score',
 ]]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
