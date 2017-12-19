@@ -53,7 +53,7 @@ THIRD_PARTY_APPS = [
 
     'rest_framework',            # utilities for rest apis
     'rest_framework.authtoken', # token authentication
-
+    'corsheaders',  # CORS
 ]
 
 # Apps specific for this project go here.
@@ -81,12 +81,15 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # CORS
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
 
 # MIGRATIONS CONFIGURATION
 # ------------------------------------------------------------------------------

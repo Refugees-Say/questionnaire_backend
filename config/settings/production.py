@@ -217,3 +217,6 @@ ADMIN_URL = env('DJANGO_ADMIN_URL')
 
 # Your production stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
+
+# CORS
+CORS_ORIGIN_ALLOW_ALL = False

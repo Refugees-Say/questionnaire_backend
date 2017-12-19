@@ -76,3 +76,5 @@ CELERY_ALWAYS_EAGER = True
 
 # Your local stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
+# CORS
+CORS_ORIGIN_ALLOW_ALL = True
