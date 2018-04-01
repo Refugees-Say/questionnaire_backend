@@ -54,6 +54,7 @@ THIRD_PARTY_APPS = [
     'rest_framework',            # utilities for rest apis
     'rest_framework.authtoken', # token authentication
     'corsheaders',  # CORS
+    'django_filters',  # for filters
 ]
 
 # Apps specific for this project go here.
