@@ -16,7 +16,7 @@ class QuestionOrderForm(forms.ModelForm):
             return True
         if attrs['radio'] is None and attrs['rank'] and attrs['selection'] is None:
             return True
-        if attrs['radio'] is None and attrs['rank'] is None and attrs['selection'] is None:
+        if attrs['radio'] is None and attrs['rank'] is None and attrs['selection']:
             return True
         raise forms.ValidationError('Only one field should be selected from radio, rank and selection')
 
