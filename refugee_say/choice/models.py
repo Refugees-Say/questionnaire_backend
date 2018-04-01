@@ -14,8 +14,8 @@ class Choice(models.Model):
     radio = models.ForeignKey('radio_question.RadioQuestion', null=True, blank=True)
     selection = models.ForeignKey('selection_question.SelectionQuestion', null=True, blank=True)
 
+    image_url = models.URLField(_('Image url'), null=True, blank=True, default='')
     choice = models.TextField(_('Choice'))
-    type = models.ForeignKey('Type')
 
     def __str__(self):
         return self.choice

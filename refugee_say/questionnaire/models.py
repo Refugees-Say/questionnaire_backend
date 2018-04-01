@@ -14,12 +14,13 @@ from refugee_say.selection_question.models import SelectionQuestion
 
 
 class QuestionOrder(models.Model):
-    order = models.SmallIntegerField(_('Question order'), default=1)
+    order = models.SmallIntegerField(_('Question order'), default=0)
     # question = models.ForeignKey('Question', on_delete=models.DO_NOTHING)
     radio = models.ForeignKey(RadioQuestion, on_delete=models.DO_NOTHING, null=True)
     rank = models.ForeignKey(RankingQuestion, on_delete=models.DO_NOTHING, null=True)
     selection = models.ForeignKey(SelectionQuestion, on_delete=models.DO_NOTHING, null=True)
     questionnaire = models.ForeignKey('Questionnaire', on_delete=models.DO_NOTHING)
+    created_at = models.DateTimeField(_('Creation time'), auto_now_add=True)
 
     def __str__(self):
         return str(self.order)
@@ -27,6 +28,11 @@ class QuestionOrder(models.Model):
 
 @receiver(pre_save, sender=QuestionOrder)
 def question_order_checker(sender, instance, *args, **kwargs): # raw, using, update_fields):
+    try:
+        instance.order = instance.questionnaire.questionorder_set.order_by('-created_at')[0].order + 1
+    except IndexError:
+        instance.order = 1
+        
     q = {
         'radio__language': instance.radio.language if hasattr(instance.radio, 'language') else None,
         'rank__language': instance.rank.language if hasattr(instance.rank, 'language') else None,
