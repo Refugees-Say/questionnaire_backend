@@ -1,3 +1,10 @@
 from django.contrib import admin
+from .models import Questionnaire, QuestionOrder
+from .forms import QuestionOrderForm
 
-# Register your models here.
+
+@admin.register(QuestionOrder)
+class QuestionOrder(admin.ModelAdmin):
+    form =  QuestionOrderForm
+
+admin.site.register(Questionnaire)
