@@ -21,7 +21,7 @@ RUN sed -i 's/\r//' /entrypoint.sh \
 COPY . /app
 
 RUN git clone https://github.com/Refugees-Say/questionnaire.git frontend
-COPY ./frontend/public /app/static/
+COPY frontend/public /app/static/
 
 RUN chown -R django /app
 
